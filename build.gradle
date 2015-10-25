@@ -47,3 +47,9 @@ task seleniumXvfb(type: Test, dependsOn: installDist) {
         'sh -e /etc/init.d/xvfb stop'.execute()
     }
 }
+
+test {
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}

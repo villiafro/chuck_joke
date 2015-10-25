@@ -28,4 +28,8 @@ public class Chuck {
         client.setFirstName(firstName);
         client.setLastName(lastName);
     }
+
+    public void resetName() {
+        client.clearName();
+    }
 }
