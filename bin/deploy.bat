@@ -1,17 +1,18 @@
-set JAR="hugb_hello_world.jar"
-set LOCATION="C:\temp"
+@echo off
+set APP=hugb_hello_world
+set LOCATION=C:\temp
 
 REM Always deploy new version, clean before
 call bin\clean.bat
 call bin\package.bat
 
-REM If jar file exists under C:\temp, remove it
-if exist %LOCATION%%JAR% del /F %LOCATION%%JAR%
+REM If app folder exists under C:\temp, remove it
+if exist %LOCATION%\\%APP% rmdir /S /Q %LOCATION%\\%APP%
 
 REM If destionation folder doesn't exist, create it
 if not exist "%LOCATION%" mkdir %LOCATION%
 
-copy build\libs\%JAR% %LOCATION%
+xcopy /E build\install %LOCATION%
 
 REM Run application once
-java -jar %LOCATION%\\%JAR%
+%LOCATION%\\%APP%\\bin\\%APP%

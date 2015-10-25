@@ -1,1 +1,1 @@
-gradlew.bat jar
+gradlew.bat installDist

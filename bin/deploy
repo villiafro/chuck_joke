@@ -1,14 +1,14 @@
 #!/bin/bash
 
-JAR="hugb_hello_world.jar"
+APP="hugb_hello_world"
 
 # Always deploy new version, clean before
 bin/clean
 bin/package
 
-# If jar file exists under /tmp, remove it
-test -f /tmp/${JAR} && rm /tmp/${JAR}
-cp build/libs/${JAR} /tmp
+# If the installation folder exists under /tmp, remove it
+test -f /tmp/${APP} && rm -r /tmp/${APP}
+cp -r build/install/${APP} /tmp
 
 # Run application once
-java -jar /tmp/${JAR}
+/tmp/${APP}/bin/${APP}
