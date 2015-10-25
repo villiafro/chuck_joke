@@ -65,7 +65,8 @@ public class ChuckWebTest {
         driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement updatedBox = wait.until(
-            ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert-success")));
+            ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert-success"))
+        );
         String expected = "Chuck Norris lost his virginity before his dad did.";
         String found = driver.findElement(By.id("results")).getText();
         assertEquals(expected, found);
@@ -92,7 +93,11 @@ public class ChuckWebTest {
 
         driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
         WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement updatedBox = wait.until(
+            ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert-success"))
+        );
         String expected = "Only Hannes Pétursson can prevent forest fires.";
         String found = driver.findElement(By.id("results")).getText();
+        assertEquals(expected, found);
     }
 }
