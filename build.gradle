@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = "com.bangsapabbi.helloworld.HelloWorld"
+mainClassName = "is.arnlaugsson.chuck_joke.ChuckJoke"
 
 repositories {
     jcenter()
@@ -13,10 +13,4 @@ dependencies {
     testCompile 'junit:junit:4.11'
 
     compile 'net.joningi:icndb-java-api:1.0'
-}
-
-jar {
-    manifest {
-        attributes("Main-Class": "com.bangsapabbi.helloworld.HelloWorld")
-    }
 }
