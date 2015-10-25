@@ -13,4 +13,5 @@ dependencies {
     testCompile 'junit:junit:4.11'
 
     compile 'net.joningi:icndb-java-api:1.0'
+    compile 'com.sparkjava:spark-core:2.3'
 }
