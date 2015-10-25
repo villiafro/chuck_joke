@@ -1,10 +1,14 @@
 package com.bangsapabbi.helloworld;
 
+import net.joningi.icndb.ICNDBClient;
+import net.joningi.icndb.Joke;
+
 public class World {
 
-    private String greeting = "Hello world!";
+    final ICNDBClient client = new ICNDBClient();
 
     public String greet() {
-        return greeting;
+        Joke randomJoke = client.getRandom();
+        return randomJoke.getJoke();
     }
 }
