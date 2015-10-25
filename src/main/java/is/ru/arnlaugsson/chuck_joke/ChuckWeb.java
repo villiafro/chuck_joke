@@ -32,6 +32,11 @@ public class ChuckWeb implements SparkApplication {
             res.status(200);
             return res;
         });
+        get("/resetName", (req, res) -> {
+            chuck.resetName();
+            res.status(200);
+            return res;
+        });
     }
 
 }

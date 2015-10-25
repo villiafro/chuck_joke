@@ -7,11 +7,49 @@ repositories {
     jcenter()
 }
 
+sourceSets {
+    selenium
+    seleniumXvfb
+}
+
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.5'
+    compile 'net.joningi:icndb-java-api:1.0'
+    compile 'com.sparkjava:spark-core:2.3'
 
     testCompile 'junit:junit:4.11'
 
-    compile 'net.joningi:icndb-java-api:1.0'
-    compile 'com.sparkjava:spark-core:2.3'
+
+    seleniumCompile 'junit:junit:4.11'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+
+    seleniumXvfbCompile 'junit:junit:4.11'
+    seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+}
+
+task selenium(type: Test, dependsOn: installDist) {
+    testClassesDir = sourceSets.selenium.output.classesDir
+    classpath = sourceSets.selenium.runtimeClasspath
+}
+
+task seleniumXvfb(type: Test, dependsOn: installDist) {
+    testClassesDir = sourceSets.selenium.output.classesDir
+    classpath = sourceSets.selenium.runtimeClasspath
+
+    environment "DISPLAY", ":99"
+
+    doFirst {
+        'bin/xvfb start'.execute()
+        'build/install/chuck_joke/bin/chuck_joke &'.execute()
+    }
+
+    doLast {
+        'sh -e /etc/init.d/xvfb stop'.execute()
+    }
+}
+
+test {
+    testLogging {
+        exceptionFormat = 'full'
+    }
 }
