@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = "is.arnlaugsson.chuck_joke.ChuckJoke"
+mainClassName = "is.arnlaugsson.chuck_joke.ChuckWeb"
 
 repositories {
     jcenter()

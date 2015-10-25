@@ -12,4 +12,20 @@ public class Chuck {
         Joke randomJoke = client.getRandom();
         return randomJoke.getJoke();
     }
+
+    public String getById(String input) {
+        Integer number = 0;
+        try {
+            number = Integer.valueOf(input);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+        Joke specificJoke = client.getById(number);
+        return specificJoke.getJoke();
+    }
+
+    public void alterName(String firstName, String lastName) {
+        client.setFirstName(firstName);
+        client.setLastName(lastName);
+    }
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chuck Norris Jokes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- load bootstrap for nicer ui -->
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel="icon" type="image/png" href="favicon.png">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Get your favorite Chuck Norris Joke</h1>
+            <p>Know your favorite? What's the id number?</p>
+            <form method="post" action="/id" class="form-inline" role="form">
+                <div class="form group">
+                    <input type="text" name="number" id="number" placeholder="3">
+                </div>
+                <button type="submit">Get joke</button>
+            </form>
+            <hr>
+            <div id="results" class="alert alert-info">Chuck Norris doesn't read books. He stares them down until he gets the information he wants.</div>
+            <hr>
+            <p>Or did you want a random joke? <a href="index.html">Get them here!</a></p>
+            <p>Is Chuck Norris not your favourite? <a href="config.html">Change the name!</a></p>
+        </div>
+
+        <!-- Load jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <!-- Use ajax to submit form, retrive joke and display on page -->
+        <script>
+        $(document).ready(function() {
+            var form = $('form');
+            form.submit(function( event ) {
+                var number = $("#number").val();
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: 'id=' + number
+                }).done(function(joke) {
+                    $('#results').html(joke).attr('class', 'alert alert-success');
+                }).fail(function() {
+                    $('#results').html('Error, no joke found...').attr('class', 'alert alert-danger');
+                });
+                event.preventDefault();
+            });
+        });
+        </script>
+    </body>
+</html>
